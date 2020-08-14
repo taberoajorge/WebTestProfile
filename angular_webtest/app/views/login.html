@@ -1,0 +1,44 @@
+<header>
+  <div class="nav__container">
+    <h1>
+      Soluciones Empresariales
+    </h1>
+  </div>
+</header>
+<main>
+  <div class="login__container">
+    <form ng-submit="login()" novalidate method="POST" id="loginForm">
+
+      <div class="img-login_container">
+        <img src="" alt="Aqui ira una imagen linda">
+      </div>
+
+      <div class="login__container-text">
+        <p>inicia Sesion</p>
+      </div>
+
+      <div>
+        <input id="login" type="text" name="email" placeholder="Correo electronico"
+        required ng-model="username">
+        <span>
+          <img  src="" alt="user icon" srcset="">
+        </span>
+      </div>
+      <div>
+        <input id="password" type="password" name="pass" placeholder="Contraseña"
+        required ng-model="password">
+        <span>
+          <img  src="" alt="password icon" srcset="">
+        </span>
+      </div>
+
+      <input type="submit" value="Inicia Sesion">
+    </form>
+  </div>
+
+</main>
+<footer>
+  <p>
+    Soluciones Empresariales SA de CV
+  </p>
+</footer>
