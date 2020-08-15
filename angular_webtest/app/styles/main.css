@@ -5,11 +5,11 @@
 body {
   height: 100%;
   background-image: url(../img/shutterstock_1389400292.jpg);
-  /* background-color: red; */
   background-size: cover;
   background-repeat: no-repeat;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   overflow: hidden;
+  height: 100vh;
 }
 
 .nav__container {
@@ -132,10 +132,6 @@ footer {
     padding: 10px;
     text-align: center;
 }
-footer p{
-    padding: 10px;
-}
-
 .box_user{
   display: flex;
   align-items: center;
@@ -175,7 +171,8 @@ footer p{
 .container_background{
   background-color: white;
   border-radius: 3px;
-  box-shadow: 3px white;
+  box-shadow: 0px 0px 2px 0.3px rgba(78, 78, 78, 0.438);
+
 }
 
 .buttom-container{
@@ -184,8 +181,14 @@ footer p{
   width: 100%;
 }
 .buttom-container button{
+  padding: 10px;
   border: none;
   border-radius: 30px;
   background-color: #E07A5F;
   color: white;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
 }
