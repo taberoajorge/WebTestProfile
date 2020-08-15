@@ -8,3 +8,9 @@ angular.module('login_app')
         templateUrl: 'partials/register.html'
     };
   })
+  .directive('logOut',  function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'partials/log_Out.html'
+    };
+  })
