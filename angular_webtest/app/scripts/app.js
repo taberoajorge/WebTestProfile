@@ -16,7 +16,10 @@ angular
         templateUrl: 'views/home.html',
         controller: 'myController'
       })
+      .when('/404', {
+        templateUrl: '404.html',
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/404'
       });
   });
