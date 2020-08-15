@@ -95,7 +95,7 @@ angular.module('login_app')
       var emailUser = $scope.clickedUser1;
       var userName = $scope.clickedUser2;
 
-      var objectToUpdate = {
+      var objectUser = {
         iduser,
         emailUser,
         userName
@@ -104,7 +104,7 @@ angular.module('login_app')
       $scope.deleteUser = function () {
 
         const DEL_USER = `http://localhost:3000/deleteUser`;
-        $http.post(DEL_USER, objectToUpdate)
+        $http.post(DEL_USER, objectUser)
           .then(
             (reponse) => {
               if (reponse.status === 200) {
@@ -116,9 +116,20 @@ angular.module('login_app')
 
       $scope.saveUpdate = function () {
 
+        var contEmailUpdate = $scope.emailUpdate;
+        var contUserUpdate  = $scope.usernameUpdate;
+
+        var contDateToUpdate = {
+          iduser,
+          contEmailUpdate,
+          contUserUpdate
+        }
+
+        console.log(contDateToUpdate);
+
         const UP_USER = `http://localhost:3000/updateUser`;
 
-        $http.post(UP_USER, objectToUpdate)
+        $http.post(UP_USER, contDateToUpdate)
           .then(
             (reponse) => {
               if (reponse.status === 200) {
