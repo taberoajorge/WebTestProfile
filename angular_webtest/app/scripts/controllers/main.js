@@ -104,7 +104,7 @@ angular.module('login_app')
       $scope.deleteUser = function () {
 
         const DEL_USER = `http://localhost:3000/deleteUser`;
-        $http.post(DEL_USER, objectToDelete)
+        $http.post(DEL_USER, objectToUpdate)
           .then(
             (reponse) => {
               if (reponse.status === 200) {
