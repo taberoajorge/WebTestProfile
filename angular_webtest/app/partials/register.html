@@ -1,0 +1,37 @@
+
+      <div class="container_menu">
+        <div class="login__container">
+        <div class="form_login">
+          
+          <div class="img-login__container">
+            <img src="../img/shutterstock_655765354 (2).png" alt="Aqui ira una imagen linda">
+          </div>
+          <form ng-submit="register()"  method="POST" id="loginForm">
+            <div ng-show="registerError" class="alert_toSign">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              {{'ERSS' | translate }}
+            </div>
+            <div class="input_login__container">
+              <span class="icon_login1 icon_style">
+                <img src="../img/account_circle-white-18dp.svg" alt="user icon" srcset="">
+              </span>
+              <input class="input_login" id="login" type="text" name="email" placeholder="{{'PHE' | translate }}" required
+              ng-model="username">
+            </div>
+            <div class="input_login__container">
+              <span class="icon_login2 icon_style">
+                <img src="../img/vpn_key-white-18dp.svg" alt="password icon" srcset="">
+              </span>
+              <input class="input_login" id="password" type="password" name="pass" placeholder="{{'PHP' | translate }}" required
+              ng-model="password">
+            </div>
+            <div class="button_container">
+              <input type="submit" value="{{'RRAS' | translate }}">
+            </div>
+          </form>
+          <div class="register_login_container">
+            <p>{{'CASC' | translate }} <a href="/">{{'BSS' | translate }}</a></p>
+          </div>
+        </div>
+      </div>
+    </div>

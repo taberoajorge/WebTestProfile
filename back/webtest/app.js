@@ -1,18 +1,26 @@
-const express = require('express');
-const app = express();
+var createError = require('http-errors');
+var express = require('express');
 bodyParser = require('body-parser');
 
+var app = express();
 
+
+// support parsing of application/json type post data
 app.use(bodyParser.json());
+
+//support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
 app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  res.header('Access-Control-Allow-Headers: X-Requested-With');
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-app.use(fileUpload())
+
 
 
 //PROCESO DE LOGIN
@@ -21,48 +29,43 @@ app.post('/login', async (req, res, err) => {
   var username = req.body.username;
   var password = req.body.password;
 
+
   var mysql = require('mysql');
   var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'JAtj2711@',
-    database: "database_ambit_pap"
+    database: "schema_test"
   });
   connection.connect();
-  let user_query = `SELECT email FROM user WHERE email='${username}';`
+  let user_query = `SELECT email FROM usuarios WHERE email='${username}';`
   connection.query(user_query, function (err, rows) {
+    
     if (err) {
       console.log(err);
     }
-    console.log("fila: ", rows);
 
-    console.log("Objeto:", req.body);
 
     if (rows.length > 0) {
 
-      let sql_query = `SELECT * FROM user WHERE email='${username}' AND password='${password}';`
+      let sql_query = `SELECT * FROM usuarios WHERE email='${username}' AND password='${password}';`
 
       connection.query(sql_query, function (err, rowses) {
         if (err) {
           console.log(err);
         }
-        console.log("fila de datos completos: ", rowses);
 
-        if(rowses.length > 0){
-          return res.status(200).send({
-            message: 'Inicio de sesion exitoso!'
-          })
-        }else{
+        if (rowses.length > 0) {
+          return res.status(200).send(
+            rowses
+          )
+        } else {
           return res.status(401).send({
             message: 'La contraseña no es la correcta!'
           })
         }
-
-        connection.end();
-
       })
-
-
+      connection.end();
 
     } else {
       return res.status(402).send({
@@ -73,22 +76,140 @@ app.post('/login', async (req, res, err) => {
     }
 
   });
- 
+
 
 
 })
 
 
-var options = {
-  dotfiles: 'ignore',
-  etag: false,
-  extensions: ['htm', 'html'],
-  index: false,
-  maxAge: '1d',
-  redirect: false
-}
+//PROCESO DE REGISTRO
+app.post('/register', async (req, res, err) => {
 
-app.use(express.static('public', options));
+      var username = req.body.username;
+      var password = req.body.password;
 
-app.listen(3000, () => console.log('Corriendo en el 3000'))
 
+      var mysql = require('mysql');
+      var connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'JAtj2711@',
+        database: "schema_test"
+      });
+      connection.connect();
+      let user_query = `SELECT email FROM usuarios WHERE email='${username}';`
+      connection.query(user_query, function (err, rows) {
+          if (err) {
+            console.log(err);
+          }
+
+
+          if (rows.length == 0) {
+
+            let sql_query = `INSERT INTO  usuarios (iduser, email, password, username) VALUES (NULL, '${username}', '${password}', NULL);`
+
+            connection.query(sql_query, function (err, rowses) {
+              if (err) {
+
+                return res.status(401).send({
+                  message: 'Ya existe un usuario con ese email!'
+                })
+
+              } else {
+                return res.status(200).send({
+                  message: 'Usuario registrado'
+                })
+              }
+            })
+            connection.end(); 
+          }
+          });
+      })
+
+// PORCESO DE CREACCION DESDE EL CRUD
+
+      app.get('/getuser', async (req, res, err) => {
+        var mysql = require('mysql');
+        var connection = mysql.createConnection({
+          host: 'localhost',
+          user: 'root',
+          password: 'JAtj2711@',
+          database: "schema_test"
+        });
+        connection.connect();
+        let user_query = `SELECT * FROM usuarios;`
+        connection.query(user_query, function (err, rows) {
+            if (err) {
+              console.log(err);
+            }
+            
+            return res.status(200).send(
+              rows
+            )
+            
+          });
+          connection.end(); 
+        })
+
+
+        app.post('/deleteUser', async (req, res, err) => {
+
+          var idDelete = req.body.iduser;
+
+          var mysql = require('mysql');
+          var connection = mysql.createConnection({
+            host: 'localhost',
+            user: 'root',
+            password: 'JAtj2711@',
+            database: "schema_test"
+          });
+
+          connection.connect();
+
+          let Duser_query = `DELETE FROM usuarios WHERE iduser=${idDelete};`
+          connection.query(Duser_query, function (err, rows) {
+            if (err) {
+              console.log(err);
+            }
+        
+            return res.status(200).send({
+              message: 'epale mano'
+            })    
+            
+          })
+          connection.end(); 
+        })
+
+        app.post('/updateUser', async (req, res, err) => {
+
+          var idDelete = req.body.iduser;
+          var emailToUpdate = req.body.emailUser;
+          var userToUpdate = req.body.userName;
+          console.log(idDelete);
+
+          var mysql = require('mysql');
+          var connection = mysql.createConnection({
+            host: 'localhost',
+            user: 'root',
+            password: 'JAtj2711@',
+            database: "schema_test"
+          });
+
+          connection.connect();
+          
+
+          let Duser_query = `UPDATE usuarios SET email='${emailToUpdate}', username='${userToUpdate}' WHERE iduser=${idDelete};`
+          connection.query(Duser_query, function (err, rows) {
+            if (err) {
+              console.log(err);
+            }
+        
+            return res.status(200).send({
+              message: 'epale mano'
+            })    
+            
+          })
+          connection.end(); 
+        })
+
+    module.exports = app;

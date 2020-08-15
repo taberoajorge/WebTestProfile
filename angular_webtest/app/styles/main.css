@@ -1,83 +1,191 @@
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+* {
+  margin: 0px;
 }
 
 body {
-  padding: 0;
+  height: 100%;
+  background-image: url(../img/shutterstock_1389400292.jpg);
+  /* background-color: red; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  overflow: hidden;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
+.nav__container {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
 }
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+.container_menu{
+    display: flex;
+    justify-content: center;
 }
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
+.login__container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 10%;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+.login__container {
+  width: 287px;
+  height: 469px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(38, 121, 142, 0.8)), to(rgba(0, 0, 0, 0.6)));
+}
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+.img-login__container {
+    margin-top: 31%;
+    /* margin: 10%; */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 82px;
+}
+
+.img-login__container img {
+  width: 100px;
+
+}
+
+.input_login__container {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+::placeholder { color: rgba(255, 255, 255, 0.5); }
+.input_login {
+  width:100%;
+  height: 50px;
+  background: transparent;
+  border: none;
+  box-sizing: border-box;
+  padding-left: 30px;
+  color: white;
+}
+
+
+.input_login:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.icon_style img {
+  width: 25px;
+
+}
+
+.icon_style {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: -105px;
+  position: fixed;
+  left: 49%;
+}
+
+
+.button_container {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.button_container input {
+    position: relative;
+    width: 100%;
+    height: 35px;
+    color: rgba(255, 255, 255, 0.8);
+    background: #E07A5F;
+    font-size: 12px;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    border: none;
+    margin-bottom: 35px;
+
+}
+
+.register_login_container {
+  text-align: center;
+}
+
+.register_login_container p {
+  font-size: 12px;
+  color: #ABA8AE;
+}
+
+.register_login_container a {
+  font-size: 12px;
+  color: #FFFF;
+  text-decoration-line: none;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 40px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+footer p{
+    padding: 10px;
+}
+
+.box_user{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10%;
+  margin-left: 25%;
+  background-color: white;
+  flex-direction: column;
+  height: 500px;
+  width: 50%;
+}
+
+.alert_toSign {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+  position: absolute;
+  top: 680px;
+  left: 700px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+.container_background{
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 3px white;
+}
+
+.buttom-container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.buttom-container button{
+  border: none;
+  border-radius: 30px;
+  background-color: #E07A5F;
+  color: white;
 }

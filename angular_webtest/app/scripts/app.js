@@ -3,15 +3,18 @@
 
 angular
   .module('login_app', [
-    'ngRoute'
+    'ngRoute',
+    'pascalprecht.translate'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/login.html',
-        controller: 'loginController'
+        controller: 'loginController',
       })
-      .when('/about', {
+      .when('/home', {
+        templateUrl: 'views/home.html',
+        controller: 'myController'
       })
       .otherwise({
         redirectTo: '/'
