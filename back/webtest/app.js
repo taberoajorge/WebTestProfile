@@ -126,7 +126,7 @@ app.post('/register', async (req, res, err) => {
           });
       })
 
-// PORCESO DE CREACCION DESDE EL CRUD
+// PORCESO DE LISTAR LOS DATOS DE USUARIOS
 
       app.get('/getuser', async (req, res, err) => {
         var mysql = require('mysql');
@@ -151,7 +151,7 @@ app.post('/register', async (req, res, err) => {
           connection.end(); 
         })
 
-
+//PROCESO DE BORRADO DE DATOS
         app.post('/deleteUser', async (req, res, err) => {
 
           var idDelete = req.body.iduser;
@@ -180,12 +180,13 @@ app.post('/register', async (req, res, err) => {
           connection.end(); 
         })
 
+
+//PROCESO DE ACTUALIZACION A BASE DE DATOS
         app.post('/updateUser', async (req, res, err) => {
 
           var idDelete = req.body.iduser;
-          var emailToUpdate = req.body.emailUser;
-          var userToUpdate = req.body.userName;
-          console.log(idDelete);
+          var emailToUpdate = req.body.contEmailUpdate;
+          var userToUpdate = req.body.contUserUpdate;
 
           var mysql = require('mysql');
           var connection = mysql.createConnection({
